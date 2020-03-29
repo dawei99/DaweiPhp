@@ -1,0 +1,12 @@
+{
+    "name": "gaoweihua/dawei-php",
+    "authors": [
+        {
+            "name": "大伟",
+            "email": "811055695@qq.com"
+        }
+    ],
+    "require": {
+        "league/pipeline": "^1.0"
+    }
+}
