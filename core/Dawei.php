@@ -1,7 +1,14 @@
 <?php
 namespace core;
+
+/**
+ * 运行主体
+ */
 class Dawei
 {
+    /**
+     * @var App
+     */
     public static $app;
 
     /**

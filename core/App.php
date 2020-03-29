@@ -3,11 +3,8 @@ namespace core;
 
 /**
  * 运行主体
- */
-
-/**
- * Class App
  * @package core
+ * @property components\request\Request $request
  * @property components\Router $router
  */
 class App
@@ -19,6 +16,11 @@ class App
         $this->_iniComponents($init['components']);
     }
 
+    /**
+     * 初始化组件
+     * @param array $components
+     * @throws \Exception
+     */
     private function _iniComponents(array $components)
     {
         if (!empty($components)) {
@@ -31,19 +33,28 @@ class App
         }
     }
 
+    /**
+     * 获取组件
+     * @param $name
+     * @return mixed
+     * @throws \Exception
+     */
     public function __get($name)
     {
         // 到组件中查找
         if (!isset($this->components[$name])) {
-            throw new \Exception('组件未找到！');
+            throw new \Exception('组件'.$name.'未找到！');
         }
         return $this->components[$name];
     }
 
+    /**
+     * 启动框架
+     */
     public function run()
     {
-        $this->router->run(); // 路由到方法
         Dawei::$app = $this;
+        $this->router->run(); // 路由到方法
     }
 
 }

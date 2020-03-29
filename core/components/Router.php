@@ -1,6 +1,8 @@
 <?php
 namespace core\components;
 
+use core\Dawei;
+
 /**
  * 路由模块
  */
@@ -11,44 +13,11 @@ class Router
     protected $actionName;
     protected $actionMark = 'action';
     protected $controllerMark = 'Controller';
-    protected $dividingModeUrlName = 'd';
 
-    private $mode;
-
-    public function __construct(array $config)
+    public function setControllerAction()
     {
-        $this->mode = $config['mode'] ?? 1;
-    }
-
-
-    protected function parsingUrl() : void
-    {
-        $modeFunc = [
-            1 => "_modeGeneral",
-            2 => "_modeDividing",
-        ];
-        $modeFun = $modeFunc[$this->mode];
-        $this->$modeFun();
-    }
-
-    /**
-     * 普通模式
-     */
-    private function _modeGeneral() : void
-    {
-        //TODO 这里需要换成request组件
-        $this->controllerName = $_GET['c'];
-        $this->actionName = $_GET['a'];
-    }
-
-    /**
-     * 斜线模式
-     */
-    private function _modeDividing() : void
-    {
-        //TODO 这里需要换成request组件
-        $dividingModeUrl = explode('/',$_GET[$this->dividingModeUrlName]);
-        list($this->controllerName, $this->actionName) = $dividingModeUrl;
+        $this->controllerName = Dawei::$app->request->get('c');
+        $this->actionName = Dawei::$app->request->get('a');
     }
 
     /**
@@ -75,7 +44,7 @@ class Router
      */
     public function run()
     {
-        $this->parsingUrl();
+        $this->setControllerAction();
         $action = $this->actionName();
         $controllerClass = '\controllers\\' . $this->controllerName();
         $controller = new $controllerClass;

@@ -8,6 +8,6 @@ class HomeController
 {
     public function actionIndex()
     {
-        echo '123';
+        echo '欢迎使用大伟PHP';
     }
 }
