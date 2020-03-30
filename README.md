@@ -1,6 +1,4 @@
-### 欢迎使用大伟PHP
-
-##### nginx重写配置
+#### nginx重写配置
 
     location / {
        if (!-e $request_filename){
@@ -9,7 +7,7 @@
        }
     }
     
-##### 目录结构
+#### 目录结构
     
     common/                   公共目录
         |- config/            配置目录

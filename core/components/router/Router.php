@@ -1,5 +1,5 @@
 <?php
-namespace core\components;
+namespace core\components\router;
 
 use core\Dawei;
 
@@ -9,15 +9,18 @@ use core\Dawei;
 
 class Router
 {
-    protected $controllerName;
-    protected $actionName;
+    protected $controllerName = "home";
+    protected $actionName = "index";
     protected $actionMark = 'action';
     protected $controllerMark = 'Controller';
 
+    /**
+     * 设置控制器、方法名
+     */
     public function setControllerAction()
     {
-        $this->controllerName = Dawei::$app->request->get('c');
-        $this->actionName = Dawei::$app->request->get('a');
+        if(Dawei::$app->request->get('c')) $this->controllerName = Dawei::$app->request->get('c');
+        if(Dawei::$app->request->get('a')) $this->actionName = Dawei::$app->request->get('a');
     }
 
     /**

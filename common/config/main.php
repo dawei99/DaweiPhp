@@ -1,5 +1,6 @@
 <?php
 return [
+    'components_init' => [],
     'components' => [
         'request' => [
             'class' => \core\components\request\Request::class,
@@ -10,7 +11,7 @@ return [
             ]
         ],
         'router' => [
-            'class' => \core\components\Router::class,
+            'class' => \core\components\router\Router::class,
         ]
     ]
 ];

@@ -23,7 +23,7 @@ class Dawei
         if (is_file($classFile)) {
             include $classFile;
         } else {
-            throw new Exception('未找到类');
+            throw new \Exception('未找到类:' . $wholeClassName);
         }
     }
 }

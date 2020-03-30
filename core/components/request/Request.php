@@ -8,7 +8,6 @@ class Request
 {
     protected $dividingModeUrlName = 'd'; // nginx重写参数
     private $mode;
-    private $home = 'index/index';
     private $parses = null;
 
     protected $_bodyParams = null; // body参数
