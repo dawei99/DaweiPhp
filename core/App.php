@@ -1,13 +1,15 @@
 <?php
 namespace core;
 
+use core\base\BaseObject;
+
 /**
  * 运行主体
  * @package core
- * @property components\request\Request $request
- * @property components\router\Router $router
+ * @property soft\request\Request $request
+ * @property soft\router\Router $router
  */
-class App
+class App extends BaseObject
 {
     private $components = [];
     private $componentsConfig = [];

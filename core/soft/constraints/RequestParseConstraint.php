@@ -1,10 +1,10 @@
 <?php
 
 
-namespace core\components\constraint;
+namespace core\soft\constraint;
 
 
-use core\components\request\Request;
+use core\soft\request\Request;
 
 interface RequestParseConstraint
 {

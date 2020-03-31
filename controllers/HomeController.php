@@ -4,10 +4,12 @@
 namespace controllers;
 
 
-class HomeController
+use core\base\Controller;
+
+class HomeController extends Controller
 {
     public function actionIndex()
     {
-        echo '欢迎使用大伟PHP';
+        return $this->draw('index', ['x' => 123]);
     }
 }

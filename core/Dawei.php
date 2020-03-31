@@ -1,6 +1,8 @@
 <?php
 namespace core;
 
+use core\base\BaseObject;
+
 /**
  * 运行主体
  */

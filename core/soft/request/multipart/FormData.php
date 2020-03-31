@@ -1,11 +1,12 @@
 <?php
 
 
-namespace core\components\request\multipart;
-use core\components\constraint\RequestParseConstraint;
-use core\components\request\Request;
+namespace core\soft\request\multipart;
+use core\base\BaseObject;
+use core\soft\constraint\RequestParseConstraint;
+use core\soft\request\Request;
 
-class FormData implements RequestParseConstraint
+class FormData extends BaseObject implements RequestParseConstraint
 {
     /**
      * 解析方法

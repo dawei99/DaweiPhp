@@ -10,6 +10,7 @@
 //$str = ob_get_contents();//捕获缓存的内容
 //var_dump($str);
 //die;
+define("__ROOT__", dirname(dirname(__FILE__)));
 
 require "../core/Dawei.php";
 require "../vendor/autoload.php";

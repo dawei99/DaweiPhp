@@ -1,13 +1,14 @@
 <?php
-namespace core\components\router;
+namespace core\soft\router;
 
+use core\base\BaseObject;
 use core\Dawei;
 
 /**
  * 路由模块
  */
 
-class Router
+class Router extends BaseObject
 {
     protected $controllerName = "home";
     protected $actionName = "index";
@@ -27,18 +28,22 @@ class Router
      * controller名称
      * @return string
      */
-    protected function controllerName() : string
+    public function controllerName(bool $mark=true) : string
     {
-        return ucfirst(strtolower($this->controllerName)) . $this->controllerMark;
+        $return = ucfirst(strtolower($this->controllerName));
+        if ($mark) $return .= $this->controllerMark;
+        return $return;
     }
 
     /**
      * action名称
      * @return string
      */
-    protected function actionName() : string
+    public function actionName(bool $mark=true) : string
     {
-        return $this->actionMark . ucfirst(strtolower($this->actionName));
+        $return = ucfirst(strtolower($this->actionName));
+        if ($mark) $return = $this->actionMark . $return;
+        return $return;
     }
 
     /**

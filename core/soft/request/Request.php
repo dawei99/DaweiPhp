@@ -1,10 +1,12 @@
 <?php
 
 
-namespace core\components\request;
+namespace core\soft\request;
 
 
-class Request
+use core\base\BaseObject;
+
+class Request extends BaseObject
 {
     protected $dividingModeUrlName = 'd'; // nginx重写参数
     private $mode;
@@ -20,6 +22,10 @@ class Request
         $this->home = $config['home'] ?? '';
     }
 
+    /**
+     * 获取完整url
+     * @return string
+     */
     public function fullUrl() : string
     {
         return $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . "?" . $_SERVER['QUERY_STRING'];
