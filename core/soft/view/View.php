@@ -27,7 +27,7 @@ class View
     {
         $content = $this->drawFileOb(...func_get_args());
         extract(['content' => $content], EXTR_OVERWRITE);
-        return include __ROOT__ . DIRECTORY_SEPARATOR . "{$this->view}" . DIRECTORY_SEPARATOR . "{$this->layoutDir}" . DIRECTORY_SEPARATOR . "{$this->layoutFile}{$this->suffix}";
+        return include __ROOT__ . __DIRS__ . "{$this->view}" . __DIRS__ . "{$this->layoutDir}" . __DIRS__ . "{$this->layoutFile}{$this->suffix}";
     }
     /**
      * 纯净渲染模板
@@ -51,7 +51,7 @@ class View
     protected function drawFileMem(string $draw, array $param=[])
     {
         extract($param, EXTR_OVERWRITE);
-        $viewFile = __ROOT__ . DIRECTORY_SEPARATOR . "{$this->view}" . DIRECTORY_SEPARATOR . "$draw{$this->suffix}";
+        $viewFile = __ROOT__ . __DIRS__ . "{$this->view}" . __DIRS__ . "$draw{$this->suffix}";
         if (!file_exists($viewFile)) throw new \Exception('模板不存在:'.$viewFile);
         return file_get_contents($viewFile);
     }
@@ -66,7 +66,7 @@ class View
      */
     protected function drawFileOb(string $draw, array $param=[])
     {
-        $viewFile = __ROOT__ . DIRECTORY_SEPARATOR . "{$this->view}" . DIRECTORY_SEPARATOR . "$draw{$this->suffix}";
+        $viewFile = __ROOT__ . __DIRS__ . "{$this->view}" . __DIRS__ . "$draw{$this->suffix}";
         if (!file_exists($viewFile)) throw new \Exception('模板不存在:'.$viewFile);
         ob_start();
         extract($param, EXTR_OVERWRITE);

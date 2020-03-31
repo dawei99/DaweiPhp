@@ -13,11 +13,23 @@ class App extends BaseObject
 {
     private $components = [];
     private $componentsConfig = [];
+    private $initConfig = null;
+
     public function __construct(array $init)
     {
+        $this->initConfig = $init;
+    }
+
+    /**
+     * 初始工作
+     * @param array $init
+     * @throws \Exception
+     */
+    private function _init() : void
+    {
         // 初始化组件
-        $this->componentsConfig = $init['components'];
-        $this->_iniComponents($init['components_init']);
+        $this->componentsConfig = $this->initConfig['components'];
+        $this->_iniComponents($this->initConfig['components_init']);
     }
 
     /**
@@ -25,7 +37,7 @@ class App extends BaseObject
      * @param array $components
      * @throws \Exception
      */
-    private function _iniComponents(array $components)
+    private function _iniComponents(array $components) : void
     {
         if (!empty($components)) {
             foreach ($components as $compName) {
@@ -70,8 +82,26 @@ class App extends BaseObject
      */
     public function run()
     {
-        Dawei::$app = $this;
-        $this->router->run(); // 路由到方法
+        try {
+            Dawei::$app = $this;
+            $this->_init();
+            $this->router->run();
+        } catch (\Exception $e) {
+            $this->exceptionHandle($e);
+        }
+
+
+    }
+
+    /**
+     * 异常处理
+     * @param \Exception $e
+     */
+    public function exceptionHandle(\Exception $e)
+    {
+        echo "出异常啦：";
+        dd($e);
+        die;
     }
 
 }
