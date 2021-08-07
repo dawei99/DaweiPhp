@@ -2,6 +2,7 @@
 namespace core;
 
 use core\base\BaseObject;
+use Throwable;
 
 /**
  * 运行主体
@@ -86,7 +87,7 @@ class App extends BaseObject
             Dawei::$app = $this;
             $this->_init();
             $this->router->run();
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             $this->exceptionHandle($e);
         }
 
@@ -95,11 +96,11 @@ class App extends BaseObject
 
     /**
      * 异常处理
-     * @param \Exception $e
+     * @param \Throwable $e
      */
-    public function exceptionHandle(\Exception $e)
+    public function exceptionHandle(\Throwable $e)
     {
-        echo "出异常啦：";
+        echo "看看吧，出异常啦！！！";
         dd($e);
         die;
     }

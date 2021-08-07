@@ -2,6 +2,7 @@
 namespace core;
 
 use core\base\BaseObject;
+use Throwable;
 
 /**
  * 运行主体
@@ -23,6 +24,7 @@ class Dawei
         $handleClas = preg_replace($backslash, "/", $wholeClassName);
         $classFile = __DIR__ . "/../$handleClas.php";
 
+
         if (is_file($classFile)) {
             include $classFile;
         } else {
@@ -34,7 +36,7 @@ class Dawei
      * 没有捕获的错误
      * @param \Exception $e
      */
-    public static function setExeptionhandler(\Exception $e)
+    public static function setExeptionhandler(\Throwable $e)
     {
         self::$app->exceptionHandle($e);
     }

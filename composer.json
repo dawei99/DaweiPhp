@@ -7,6 +7,7 @@
         }
     ],
     "require": {
-        "league/pipeline": "^1.0"
+        "league/pipeline": "^1.0",
+        "guzzlehttp/guzzle": "^7.3"
     }
 }

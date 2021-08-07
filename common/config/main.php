@@ -1,5 +1,10 @@
 <?php
 return [
+
+    'providers' => [
+        \core\soft\container\providers\webProvider::class,
+    ],
+
     'components_init' => [],
     'components' => [
         'request' => [
@@ -13,5 +18,5 @@ return [
         'router' => [
             'class' => \core\soft\router\Router::class,
         ]
-    ]
+    ],
 ];
